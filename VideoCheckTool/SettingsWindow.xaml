@@ -1,0 +1,48 @@
+<Window x:Class="VideoCheckTool.SettingsWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="設定" Width="670" Height="590" ResizeMode="NoResize"
+        WindowStartupLocation="CenterOwner">
+    <Grid Margin="22">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/><RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/><RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="0">
+            <TextBlock Text="分類資料夾" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,12"/>
+            <Grid Margin="0,0,0,8">
+                <Grid.ColumnDefinitions><ColumnDefinition Width="36"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <Border Background="#2563EB" CornerRadius="4" Width="28" Height="28"><TextBlock Text="A" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/></Border>
+                <TextBox x:Name="aFolderTextBox" Grid.Column="1" Margin="8,0"/>
+                <Button Grid.Column="2" Content="瀏覽…" Click="BrowseAFolder_Click"/>
+            </Grid>
+            <Grid>
+                <Grid.ColumnDefinitions><ColumnDefinition Width="36"/><ColumnDefinition Width="*"/><ColumnDefinition Width="Auto"/></Grid.ColumnDefinitions>
+                <Border Background="#D97706" CornerRadius="4" Width="28" Height="28"><TextBlock Text="D" HorizontalAlignment="Center" VerticalAlignment="Center" FontWeight="Bold"/></Border>
+                <TextBox x:Name="dFolderTextBox" Grid.Column="1" Margin="8,0"/>
+                <Button Grid.Column="2" Content="瀏覽…" Click="BrowseDFolder_Click"/>
+            </Grid>
+        </StackPanel>
+
+        <Separator Grid.Row="1" Margin="0,20,0,16" Background="{StaticResource BorderBrush}"/>
+
+        <Grid Grid.Row="2">
+            <Grid.ColumnDefinitions><ColumnDefinition/><ColumnDefinition Width="16"/><ColumnDefinition/></Grid.ColumnDefinitions>
+            <GroupBox Header="影片" Foreground="{StaticResource TextBrush}" Padding="14">
+                <WrapPanel x:Name="videoExtensionsPanel"/>
+            </GroupBox>
+            <GroupBox Grid.Column="2" Header="照片" Foreground="{StaticResource TextBrush}" Padding="14">
+                <WrapPanel x:Name="imageExtensionsPanel"/>
+            </GroupBox>
+        </Grid>
+
+        <Grid Grid.Row="3" Margin="0,20,0,0">
+            <TextBlock Text="可同時勾選影片與照片；設定會自動保留。" Foreground="{StaticResource MutedBrush}" VerticalAlignment="Center"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Content="取消" Width="86" IsCancel="True"/>
+                <Button Content="儲存" Width="86" Background="#2563EB" IsDefault="True" Click="Save_Click"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>
